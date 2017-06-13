@@ -4,6 +4,8 @@ These module will set OEM information visible in File Explorer - Properties. The
 After scheduling the two modules, when you select File Explorer - Properties, you see the system and support information with the logo.
 See also the example screen.
 
+![alt text](https://raw.githubusercontent.com/marcelvenema/RESONE.Hub/master/Automation.SetOEMInformation/example.png)
+
 Kind regards,
 Marcel Venema
 
