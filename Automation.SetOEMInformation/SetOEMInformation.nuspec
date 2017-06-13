@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>SetOEMInformation</id>
+    <version>1.1.0</version>
+    <authors>MarcelVenema</authors>
+    <iconUrl>https://marcelvenema.com/files/icon_oemlogo.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>These modules will set OEM information visible in File Explorer - Properties. There are 2 modules: One module to download the oemlogo (192x192 pixels) to a temporary location and another module to set the OEM information and copy the logo to the definitive location.</description>
+    <summary>Set OEM Information - Visible in File Explorer - Properties</summary>
+    <releaseNotes>Initial version 1.1.0</releaseNotes>
+    <copyright>Copyright 2017 Marcel Venema</copyright>
+    <tags>SS</tags>
+    <packageTypes>
+      <packageType name="Automation" version="0.0" />
+      <packageType name="Buildingblock" version="0.0" />
+    </packageTypes>
+  </metadata>
+</package>

@@ -1,0 +1,496 @@
+<?xml version="1.0"?>
+<!-- RES ONE Automation Building Blocks -->
+<!-- Created by crowd29\administrator on 6/11/2017 6:35:16 AM -->
+<AutomationManager>
+	<buildingblock version="3.0">
+		<projects/>
+		<modules>
+			<module>
+				<properties>
+					<guid>{F1A9D55C-8910-4F09-9DD5-36E6ED0D9B52}</guid>
+					<name>Download OEMInfo resource MarcelVenema</name>
+					<enabled>yes</enabled>
+					<description>Download OEMlogo resource MarcelVenema
+
+Download specific customer resource to %TMP%\CUSTOMER
+
+20160829 MarcelVenema</description>
+					<version>1.0.4</version>
+					<versioncomment>Updated version</versioncomment>
+					<properties>
+						<separators/>
+					</properties>
+					<folderpath>
+						<folder>
+							<name>Software</name>
+							<description/>
+							<guid>{14F01017-D28C-4A9D-AB35-EA30C5F1CCC4}</guid>
+							<folder>
+								<name>MarcelVenema</name>
+								<description/>
+								<guid>{F8758919-0A42-467C-97DD-84B681E2EC9E}</guid>
+								<folder>
+									<name>Installation and Configuration</name>
+									<description/>
+									<guid>{39D87617-29C9-416C-97CF-1BE85977FD5A}</guid>
+								</folder>
+							</folder>
+						</folder>
+					</folderpath>
+					<deleteusedresources>yes</deleteusedresources>
+				</properties>
+				<tasks>
+					<task hidden="yes">
+						<limitinvoke>no</limitinvoke>
+						<parameters/>
+						<conditions>
+							<condition guid="{22B756C4-AB3B-41C0-BD34-BE432DBB5826}">
+								<expressions/>
+								<operator>AND</operator>
+								<actiontrue>3</actiontrue>
+								<when>0</when>
+								<action>3</action>
+								<enabled>yes</enabled>
+							</condition>
+						</conditions>
+						<variablescontainer></variablescontainer>
+					</task>
+					<task>
+						<properties>
+							<type>DOWNLOAD</type>
+							<guid>{22B756C4-AB3B-41C0-BD34-BE432DBB5826}</guid>
+							<description>Download 108.1 KB in 1 file(s) to "%TMP%\CUSTOMER"</description>
+							<enabled>yes</enabled>
+							<comments/>
+							<onerror>fail</onerror>
+						</properties>
+						<settings>
+							<ysnlog>yes</ysnlog>
+							<resources>{DA30DEC9-4268-4E42-BC8B-76379AC870E6}</resources>
+							<destination>%TMP%\CUSTOMER</destination>
+							<ysndestination>yes</ysndestination>
+						</settings>
+					</task>
+				</tasks>
+			</module>
+			<module>
+				<properties>
+					<guid>{43524F57-4429-0000-4D56-E004A305AAA2}</guid>
+					<name>Set OEM information MarcelVenema</name>
+					<enabled>yes</enabled>
+					<description>Set OEM  information in windows Explorer - Properties.
+Write OEMINFO.INI, Set installation information, Copy oemlogo.bmp
+
+Prerequisites:
+- oemlogo.bmp present in %TMP%\CUSTOMER folder
+
+20140501 MarcelVenema</description>
+					<version>1.0.13</version>
+					<versioncomment>Updated version</versioncomment>
+					<properties>
+						<separators/>
+					</properties>
+					<folderpath>
+						<folder>
+							<name>Software</name>
+							<description/>
+							<guid>{14F01017-D28C-4A9D-AB35-EA30C5F1CCC4}</guid>
+							<folder>
+								<name>MarcelVenema</name>
+								<description/>
+								<guid>{F8758919-0A42-467C-97DD-84B681E2EC9E}</guid>
+								<folder>
+									<name>Installation and Configuration</name>
+									<description/>
+									<guid>{39D87617-29C9-416C-97CF-1BE85977FD5A}</guid>
+								</folder>
+							</folder>
+						</folder>
+					</folderpath>
+					<deleteusedresources>yes</deleteusedresources>
+				</properties>
+				<tasks>
+					<task hidden="yes">
+						<limitinvoke>no</limitinvoke>
+						<parameters>
+							<param noinput="yes">
+								<name>IC.VERSION</name>
+								<value1>1.0</value1>
+								<value2></value2>
+								<value3></value3>
+								<type>0</type>
+								<description>This parameter will be used to set the version or release number of a server or workstation.
+
+The value will be stored in the registry HKLM\Software\AF\Version.</description>
+								<hint>Please provide the necessary input</hint>
+								<selection></selection>
+								<inputtiming>
+									<importbb showprev="no" eraseprev="no">no</importbb>
+									<schedulejob showprev="yes" eraseprev="no">yes</schedulejob>
+								</inputtiming>
+								<inputoptions>
+									<confirm>no</confirm>
+									<force>no</force>
+									<required>no</required>
+									<validation>no</validation>
+								</inputoptions>
+							</param>
+							<param noinput="yes">
+								<name>IC.SUPPORTHOURS</name>
+								<value1>08:00 - 17:00 uur</value1>
+								<value2></value2>
+								<value3></value3>
+								<type>0</type>
+								<description>This text will be placed on System - Support - Support Hours on Computer screen.</description>
+								<hint>Please provide the necessary input</hint>
+								<selection></selection>
+								<inputtiming>
+									<importbb showprev="no" eraseprev="no">no</importbb>
+									<schedulejob showprev="yes" eraseprev="no">yes</schedulejob>
+								</inputtiming>
+								<inputoptions>
+									<confirm>no</confirm>
+									<force>no</force>
+									<required>no</required>
+									<validation>no</validation>
+								</inputoptions>
+							</param>
+							<param noinput="yes">
+								<name>IC.SUPPORTPHONE</name>
+								<value1>555-1234567</value1>
+								<value2></value2>
+								<value3></value3>
+								<type>0</type>
+								<description>This text will be placed on System - Support - Phone Number on Computer screen.</description>
+								<hint>Please provide the necessary input</hint>
+								<selection></selection>
+								<inputtiming>
+									<importbb showprev="no" eraseprev="no">no</importbb>
+									<schedulejob showprev="yes" eraseprev="no">yes</schedulejob>
+								</inputtiming>
+								<inputoptions>
+									<confirm>no</confirm>
+									<force>no</force>
+									<required>no</required>
+									<validation>no</validation>
+								</inputoptions>
+							</param>
+							<param noinput="yes">
+								<name>IC.SUPPORTURL</name>
+								<value1>http://www.marcelvenema.com</value1>
+								<value2></value2>
+								<value3></value3>
+								<type>0</type>
+								<description>This text will be placed on System - Support - Support URL on Computer screen.</description>
+								<hint>Please provide the necessary input</hint>
+								<selection></selection>
+								<inputtiming>
+									<importbb showprev="no" eraseprev="no">no</importbb>
+									<schedulejob showprev="yes" eraseprev="no">yes</schedulejob>
+								</inputtiming>
+								<inputoptions>
+									<confirm>no</confirm>
+									<force>no</force>
+									<required>no</required>
+									<validation>no</validation>
+								</inputoptions>
+							</param>
+							<param>
+								<name>IC.CUSTOMER</name>
+								<value1>MarcelVenema.com</value1>
+								<value2></value2>
+								<value3></value3>
+								<type>0</type>
+								<description>This text will be placed on System - Support - Customer on Computer screen.</description>
+								<hint>Please provide the necessary input</hint>
+								<selection></selection>
+								<inputtiming>
+									<importbb showprev="yes" eraseprev="no">yes</importbb>
+									<schedulejob showprev="yes" eraseprev="no">yes</schedulejob>
+								</inputtiming>
+								<inputoptions>
+									<confirm>no</confirm>
+									<force>no</force>
+									<required>no</required>
+									<validation>no</validation>
+								</inputoptions>
+							</param>
+						</parameters>
+						<conditions>
+							<condition guid="{1F3EC440-A79D-4DC0-90CE-83875E9C3331}">
+								<expressions></expressions>
+							</condition>
+							<condition guid="{B7A72686-D0D7-4434-A38F-9E52E468405A}">
+								<expressions></expressions>
+								<operator>AND</operator>
+								<actiontrue>3</actiontrue>
+								<when>0</when>
+								<action>3</action>
+								<enabled>yes</enabled>
+								<setparametertrue>no</setparametertrue>
+								<parametertrue>QwIQVERSION</parametertrue>
+								<setparameter>no</setparameter>
+								<parameter>QwIQVERSION</parameter>
+							</condition>
+							<condition guid="{457DE52D-267B-41C9-9067-92A11D484D5F}">
+								<expressions></expressions>
+								<operator>AND</operator>
+								<actiontrue>3</actiontrue>
+								<when>0</when>
+								<action>3</action>
+								<enabled>yes</enabled>
+							</condition>
+							<condition guid="{80F61B6B-422D-4E43-A078-950B08033933}">
+								<expressions>
+									<expression guid="{730FFFB0-BCCD-4081-8F82-32ED591CF3DE}">
+										<operand>Operating System Bit Version</operand>
+										<operator>=</operator>
+										<value>32</value>
+										<type>6</type>
+									</expression>
+								</expressions>
+								<operator>AND</operator>
+								<actiontrue>3</actiontrue>
+								<when>0</when>
+								<action>3</action>
+								<enabled>yes</enabled>
+								<setparametertrue>no</setparametertrue>
+								<parametertrue>CSAF_VERSION</parametertrue>
+								<setparameter>no</setparameter>
+								<parameter>CSAF_VERSION</parameter>
+							</condition>
+							<condition guid="{9ADA0251-B4B5-4A66-A350-A046EBCF1617}">
+								<expressions>
+									<expression guid="{730FFFB0-BCCD-4081-8F82-32ED591CF3DE}">
+										<operand>Operating System Bit Version</operand>
+										<operator>=</operator>
+										<value>64</value>
+										<type>6</type>
+									</expression>
+								</expressions>
+								<operator>AND</operator>
+								<actiontrue>3</actiontrue>
+								<when>0</when>
+								<action>0</action>
+								<enabled>yes</enabled>
+								<setparametertrue>no</setparametertrue>
+								<parametertrue>CSAF_VERSION</parametertrue>
+								<setparameter>no</setparameter>
+								<parameter>CSAF_VERSION</parameter>
+							</condition>
+							<condition guid="{7D7EDACB-5B14-464E-BB53-1913F75532FC}">
+								<expressions/>
+								<operator>AND</operator>
+								<actiontrue>3</actiontrue>
+								<when>0</when>
+								<action>3</action>
+								<enabled>yes</enabled>
+							</condition>
+						</conditions>
+						<variablescontainer></variablescontainer>
+					</task>
+					<task>
+						<properties>
+							<type>COMMAND</type>
+							<guid>{7D7EDACB-5B14-464E-BB53-1913F75532FC}</guid>
+							<description>Execute "@[SCRIPT]"</description>
+							<enabled>yes</enabled>
+							<comments>Copy oemlogo.bmp</comments>
+							<onerror>fail</onerror>
+						</properties>
+						<settings>
+							<commandline>@[SCRIPT]</commandline>
+							<username/>
+							<password encrypted="yes"/>
+							<loaduserprofile>no</loaduserprofile>
+							<usecmd>no</usecmd>
+							<redirect>no</redirect>
+							<failonerroutput>no</failonerroutput>
+							<validateexitcode>no</validateexitcode>
+							<validateexitcode>no</validateexitcode>
+							<failifexitcode>no</failifexitcode>
+							<exitcodes>0</exitcodes>
+							<timeout>10</timeout>
+							<terminate>no</terminate>
+							<terminatetree>no</terminatetree>
+							<grablogfile/>
+							<script>COPY %TMP%\CUSTOMER\oemlogo.bmp %SYSTEMROOT%\SYSTEM32\oemlogo.bmp /V /Y</script>
+							<scriptext>cmd</scriptext>
+						</settings>
+					</task>
+					<task>
+						<properties>
+							<type>REGISTRY</type>
+							<guid>{B7A72686-D0D7-4434-A38F-9E52E468405A}</guid>
+							<description>Apply Registry Settings</description>
+							<enabled>yes</enabled>
+							<comments>Set OEM Information</comments>
+							<onerror>fail</onerror>
+						</properties>
+						<settings>
+							<regfile>5245535A4C49421D030000789CA592516BC2301485DF05FF4328133698221B7B1104BB9AAD658D294DAB8829526C74819A489A6EF8EF97B61B76C2906DC95372BF7B6E72380B2E32F95E8090ED78A1D511C08C6BA9C09CA9824B011E06C361B753ED95FB02976BC7B70981641D621CD1A4DB998C2DEB54F5B163FB6B643BAE378397CA043F450B3B84C9258022BE51B2905BFD0B942E9A9FFDA1853AA5524CE84F0FFEAF4031449ED84AB54F7523D8F862F97227ADB1D5234B12415479DAA3B439DCDFD1AACDC7CF78F088828A46A928B7E946978A29D375B5F29C81139308231826352033969BCA5B3376046A640E43E2E159720BB828749AE7F52340966A360293D5D48E60E421789D65FDFDBE7F34EBA65623E5E120958E43FF6B188983008791B96903C1AB14EC0C095C3C836DC895A52ACE2017C721497ECE47EDC3A510D510254C978793AFC6B86979C8F926355936B1E66277B2E5BB2B2DE59898BB766A3F000B82EEBD</regfile>
+						</settings>
+					</task>
+					<task>
+						<properties>
+							<type>REGISTRY</type>
+							<guid>{80F61B6B-422D-4E43-A078-950B08033933}</guid>
+							<description>Apply Registry Settings</description>
+							<enabled>yes</enabled>
+							<comments>Set installation information x86</comments>
+							<onerror>fail</onerror>
+						</properties>
+						<settings>
+							<regfile>5245535A4C49420D010000789C0BCFCC4BC92F2F56084A4DCF2C2E29AA54704DC92CC92F52084B2D2ACECCCF5330D53330E0E502C1680F6FD7C878671FC7E060D7E0F8207FFF90985884B88FBFB3A34FBCAFA3B387A79F2B6E89607FB79070C72057820A621CDD806A94A0CE50B2555289F674D60B730D0AF6F4F78B55024A79E6159724E6E4B82496A402A51DA25D1C435C433C7D5D355C5C747D7D75238140C1C3C3CACF4F13ACDC3DD4D305AC0EC40089C0EC0F0D061A0A713100E3254A3E</regfile>
+						</settings>
+					</task>
+					<task>
+						<properties>
+							<type>REGISTRY</type>
+							<guid>{9ADA0251-B4B5-4A66-A350-A046EBCF1617}</guid>
+							<description>Apply Registry Settings</description>
+							<enabled>yes</enabled>
+							<comments>Set installation information x64</comments>
+							<onerror>fail</onerror>
+						</properties>
+						<settings>
+							<regfile>5245535A4C494246010000789C0BCFCC4BC92F2F56084A4DCF2C2E29AA54704DC92CC92F52084B2D2ACECCCF5330D53330E0E502C1680F6FD7C878671FC7E060D7E0F8207FFF90985884B88FBFB3A34FBCAFA3B387A79F2B6E89607FB79070C72057820A62C2F3CBCD4C8C8DFCF2535249521CE3E80654AF0475BF92AD924AB4A7B35E986B50B0A7BF5FAC1250CA33AFB8243127C725B1241528ED10EDE218E21AE2E9EBAAE1E2A2EBEBAB1B09040A1E1E567E7E9A60E5EEA19E2E607520064804E696D060A0A110AF020028FC5B16</regfile>
+						</settings>
+					</task>
+					<task>
+						<properties>
+							<type>FILEOPERATIONS</type>
+							<guid>{457DE52D-267B-41C9-9067-92A11D484D5F}</guid>
+							<description>Perform single file operation</description>
+							<enabled>yes</enabled>
+							<comments>Create OEMINFO.INI
+
+</comments>
+							<onerror>fail</onerror>
+							<ignore_errors>no</ignore_errors>
+						</properties>
+						<settings>
+							<fileoperationtask>
+								<type>edit</type>
+								<sourcelocation>%SYSTEMROOT%\SYSTEM32\OEMINFO.INI</sourcelocation>
+								<parameters>
+									<parameter>
+										<section>General</section>
+										<keyname>Manufacturer</keyname>
+										<keyvalue>$[IC.CUSTOMER]</keyvalue>
+									</parameter>
+									<parameter>
+										<section>General</section>
+										<keyname>Model</keyname>
+										<keyvalue>AF version v$[IC.VERSION] Automation framework. @[DATETIME("dd-mm-yyyy")]</keyvalue>
+									</parameter>
+									<parameter>
+										<section>Support Information</section>
+										<keyname>Line1</keyname>
+										<keyvalue></keyvalue>
+									</parameter>
+									<parameter>
+										<section>Support Information</section>
+										<keyname>Line2</keyname>
+										<keyvalue></keyvalue>
+									</parameter>
+									<parameter>
+										<section>Support Information</section>
+										<keyname>Line3</keyname>
+										<keyvalue></keyvalue>
+									</parameter>
+									<parameter>
+										<section>Support Information</section>
+										<keyname>Line4</keyname>
+										<keyvalue></keyvalue>
+									</parameter>
+									<parameter>
+										<section>Support Information</section>
+										<keyname>Line5</keyname>
+										<keyvalue></keyvalue>
+									</parameter>
+									<parameter>
+										<section>Support Information</section>
+										<keyname>Line6</keyname>
+										<keyvalue></keyvalue>
+									</parameter>
+									<parameter>
+										<section>Support Information</section>
+										<keyname>Line7</keyname>
+										<keyvalue></keyvalue>
+									</parameter>
+									<parameter>
+										<section>Support Information</section>
+										<keyname>Line8</keyname>
+										<keyvalue></keyvalue>
+									</parameter>
+									<parameter>
+										<section>Support Information</section>
+										<keyname>Line9</keyname>
+										<keyvalue></keyvalue>
+									</parameter>
+								</parameters>
+							</fileoperationtask>
+						</settings>
+					</task>
+				</tasks>
+			</module>
+		</modules>
+		<resources crc32="615A89DF">
+			<resource>
+				<properties>
+					<guid>{DA30DEC9-4268-4E42-BC8B-76379AC870E6}</guid>
+					<version>1.0.1</version>
+					<versioncomment>Updated version</versioncomment>
+					<type>DATABASE</type>
+					<file>oemlogo.bmp</file>
+					<parsefilecontent>no</parsefilecontent>
+					<skipenvironmentvariables>no</skipenvironmentvariables>
+					<comment>OEMlogo 192x192
+
+20140501 MarcelVenema</comment>
+					<enabled>yes</enabled>
+					<crc32>3ACBA1DD</crc32>
+					<folderpath>
+						<folder>
+							<name>_Customer</name>
+							<description/>
+							<guid>{981C70FE-9AD3-4374-BA66-4C0DBEAFB232}</guid>
+							<folder>
+								<name>MarcelVenema</name>
+								<description/>
+								<guid>{593F2700-3483-4E7E-B9D7-75A02388C3BA}</guid>
+							</folder>
+						</folder>
+					</folderpath>
+				</properties>
+			</resource>
+		</resources>
+		<runbooks/>
+		<teams/>
+		<projectfolders/>
+		<modulefolders>
+			<folder>
+				<guid>{14F01017-D28C-4A9D-AB35-EA30C5F1CCC4}</guid>
+				<name>Software</name>
+				<description/>
+				<parent/>
+			</folder>
+			<folder>
+				<guid>{F8758919-0A42-467C-97DD-84B681E2EC9E}</guid>
+				<name>MarcelVenema</name>
+				<description/>
+				<parent>{14F01017-D28C-4A9D-AB35-EA30C5F1CCC4}</parent>
+			</folder>
+			<folder>
+				<guid>{39D87617-29C9-416C-97CF-1BE85977FD5A}</guid>
+				<name>Installation and Configuration</name>
+				<description/>
+				<parent>{F8758919-0A42-467C-97DD-84B681E2EC9E}</parent>
+			</folder>
+		</modulefolders>
+		<resourcefolders/>
+		<runbookfolders/>
+		<teamfolders/>
+	</buildingblock>
+</AutomationManager>
