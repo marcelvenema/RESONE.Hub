@@ -1,0 +1,310 @@
+<?xml version="1.0"?>
+<!-- RES ONE Automation Building Blocks -->
+<!-- Created by crowd29\administrator on 6/8/2017 7:39:15 PM -->
+<AutomationManager>
+	<buildingblock version="3.0">
+		<projects/>
+		<modules>
+			<module>
+				<properties>
+					<guid>{AD779AAB-C4F9-4B11-8223-F0826331E863}</guid>
+					<name>Download Default User Account Picture resource MarcelVenema.com</name>
+					<enabled>yes</enabled>
+					<description>Download Default User Account Picture resource MarcelVenema.com
+
+Download specific customer resource to %TMP%\CUSTOMER
+
+20160829 MarcelVenema.com</description>
+					<version>1.0.1</version>
+					<versioncomment>Updated version</versioncomment>
+					<properties>
+						<separators/>
+					</properties>
+					<folderpath>
+						<folder>
+							<name>_Customer</name>
+							<description/>
+							<guid>{A569737A-E60D-4E8F-AA4F-76CA9C8CFDF1}</guid>
+							<folder>
+								<name>MarcelVenema.com</name>
+								<description/>
+								<guid>{E1F41395-25EE-4A9D-A79A-5B3FF2310225}</guid>
+								<folder>
+									<name>Installation and Configuration</name>
+									<description/>
+									<guid>{51C3EE09-2CBF-4E6F-A2F9-461DFA8B0FAA}</guid>
+								</folder>
+							</folder>
+						</folder>
+					</folderpath>
+					<deleteusedresources>yes</deleteusedresources>
+				</properties>
+				<tasks>
+					<task hidden="yes">
+						<limitinvoke>no</limitinvoke>
+						<parameters/>
+						<conditions>
+							<condition guid="{DB6A9913-E920-4CBB-B5D7-DE70AE98CC54}">
+								<expressions/>
+								<operator>AND</operator>
+								<actiontrue>3</actiontrue>
+								<when>0</when>
+								<action>3</action>
+								<enabled>yes</enabled>
+							</condition>
+						</conditions>
+						<variablescontainer></variablescontainer>
+					</task>
+					<task>
+						<properties>
+							<type>DOWNLOAD</type>
+							<guid>{DB6A9913-E920-4CBB-B5D7-DE70AE98CC54}</guid>
+							<description>Download 28.1 KB in 1 file(s) to "%TMP%\CUSTOMER"</description>
+							<enabled>yes</enabled>
+							<comments/>
+							<onerror>fail</onerror>
+						</properties>
+						<settings>
+							<ysnlog>yes</ysnlog>
+							<resources>{CC9C687D-1FF4-4B5B-BEBF-179EC53C5AF3}</resources>
+							<destination>%TMP%\CUSTOMER</destination>
+							<ysndestination>yes</ysndestination>
+						</settings>
+					</task>
+				</tasks>
+			</module>
+			<module>
+				<properties>
+					<guid>{43524F57-4429-0000-4D56-0AFD94A9D7F0}</guid>
+					<name>Set Default User Account Picture</name>
+					<enabled>yes</enabled>
+					<description>Copy Default User Account pictures from %TMP%\CUSTOMER\* to usertile location
+Prerequisites:
+user.bmp, user.png, user-40.png, user-200.png present in %TMP%\CUSTOMER folder
+
+20140501 MarcelVenema.com</description>
+					<version>1.0.6</version>
+					<versioncomment>Updated version</versioncomment>
+					<properties>
+						<separators/>
+					</properties>
+					<folderpath>
+						<folder>
+							<name>Software</name>
+							<description/>
+							<guid>{14F01017-D28C-4A9D-AB35-EA30C5F1CCC4}</guid>
+							<folder>
+								<name>MarcelVenema.com</name>
+								<description/>
+								<guid>{F8758919-0A42-467C-97DD-84B681E2EC9E}</guid>
+								<folder>
+									<name>Installation and Configuration</name>
+									<description/>
+									<guid>{39D87617-29C9-416C-97CF-1BE85977FD5A}</guid>
+								</folder>
+							</folder>
+						</folder>
+					</folderpath>
+					<deleteusedresources>yes</deleteusedresources>
+				</properties>
+				<tasks>
+					<task hidden="yes">
+						<limitinvoke>no</limitinvoke>
+						<parameters/>
+						<conditions>
+							<condition guid="{A7666CC4-86AD-418F-B34E-7FB02C25AA52}">
+								<expressions></expressions>
+								<operator>AND</operator>
+								<actiontrue>3</actiontrue>
+								<when>0</when>
+								<action>3</action>
+								<enabled>yes</enabled>
+							</condition>
+							<condition guid="{799C4957-00A7-4430-93F4-5D4664CC2322}">
+								<expressions></expressions>
+								<operator>AND</operator>
+								<actiontrue>3</actiontrue>
+								<when>0</when>
+								<action>3</action>
+								<enabled>yes</enabled>
+							</condition>
+							<condition guid="{961A697D-A9B1-4843-9D5C-A602DE2533D2}">
+								<expressions>
+									<expression guid="{2AAECA4F-4231-4BC6-AB16-F176138FD96F}">
+										<operand>%TMP%\CUSTOMER</operand>
+										<operator>EXIST</operator>
+										<value>True</value>
+										<type>20</type>
+									</expression>
+								</expressions>
+								<operator>AND</operator>
+								<actiontrue>0</actiontrue>
+								<setparametertrue>no</setparametertrue>
+								<parametertrue></parametertrue>
+								<when>0</when>
+								<action>2</action>
+								<setparameter>no</setparameter>
+								<parameter></parameter>
+								<enabled>yes</enabled>
+							</condition>
+						</conditions>
+						<variablescontainer></variablescontainer>
+					</task>
+					<task>
+						<properties>
+							<type>QSYSTEMVAR</type>
+							<guid>{961A697D-A9B1-4843-9D5C-A602DE2533D2}</guid>
+							<description>Query system environment variables</description>
+							<enabled>yes</enabled>
+							<comments>stub to detect if %TMP%\CUSTOMER exists</comments>
+							<onerror>resume</onerror>
+						</properties>
+						<settings>
+							<usefilter>no</usefilter>
+							<filter/>
+							<query>system</query>
+						</settings>
+						<evaluators>
+							<evaluator>
+								<expressions/>
+								<operator>AND</operator>
+								<true>
+									<action>0</action>
+									<setparameter>no</setparameter>
+									<parameter>AF_VERSIONREG</parameter>
+								</true>
+								<false>
+									<action>0</action>
+									<setparameter>no</setparameter>
+									<parameter>AF_VERSIONREG</parameter>
+								</false>
+								<enabled>yes</enabled>
+							</evaluator>
+						</evaluators>
+					</task>
+					<task>
+						<properties>
+							<type>COMMAND</type>
+							<guid>{A7666CC4-86AD-418F-B34E-7FB02C25AA52}</guid>
+							<description>Execute "@[SCRIPT]"</description>
+							<enabled>yes</enabled>
+							<comments>Copy default user account pictures</comments>
+							<onerror>fail</onerror>
+						</properties>
+						<settings>
+							<commandline>@[SCRIPT]</commandline>
+							<username/>
+							<password encrypted="yes"/>
+							<loaduserprofile>no</loaduserprofile>
+							<usecmd>yes</usecmd>
+							<redirect>yes</redirect>
+							<failonerroutput>no</failonerroutput>
+							<validateexitcode>no</validateexitcode>
+							<validateexitcode>no</validateexitcode>
+							<failifexitcode>no</failifexitcode>
+							<exitcodes>0</exitcodes>
+							<timeout>2</timeout>
+							<terminate>no</terminate>
+							<terminatetree>no</terminatetree>
+							<grablogfile/>
+							<script>copy "%TMP%\CUSTOMER\user.bmp" "%systemdrive%\ProgramData\Microsoft\User Account Pictures\guest.bmp" /y
+copy "%TMP%\CUSTOMER\user.png" "%systemdrive%\ProgramData\Microsoft\User Account Pictures\guest.png" /y
+copy "%TMP%\CUSTOMER\user-200.png" "%systemdrive%\ProgramData\Microsoft\User Account Pictures\guest-200.png" /y
+copy "%TMP%\CUSTOMER\user-40.png" "%systemdrive%\ProgramData\Microsoft\User Account Pictures\guest-40.png" /y
+copy "%TMP%\CUSTOMER\user.bmp" "%systemdrive%\ProgramData\Microsoft\User Account Pictures\user.bmp" /y
+copy "%TMP%\CUSTOMER\user.png" "%systemdrive%\ProgramData\Microsoft\User Account Pictures\user.png" /y
+copy "%TMP%\CUSTOMER\user-200.png" "%systemdrive%\ProgramData\Microsoft\User Account Pictures\user-200.png" /y
+copy "%TMP%\CUSTOMER\user-40.png" "%systemdrive%\ProgramData\Microsoft\User Account Pictures\user-40.png" /y</script>
+							<scriptext>cmd</scriptext>
+						</settings>
+					</task>
+					<task>
+						<properties>
+							<type>REGISTRY</type>
+							<guid>{799C4957-00A7-4430-93F4-5D4664CC2322}</guid>
+							<description>Apply Registry Settings</description>
+							<enabled>yes</enabled>
+							<comments>Set UseDefaultTile registry key</comments>
+							<onerror>fail</onerror>
+						</properties>
+						<settings>
+							<regfile>5245535A4C4942ED010000789C0BCFCC4BC92F2F56084A4DCF2C2E29AA54704DC92CC92F52084B2D2ACECCCF5330D53330E0E502C1680F6FD7C878671FC7E060D7E0F8207FFF90985884B88FBFB3A34FBCAFA3B387A79F2B6E89607FB79070C72057820A627C33938BF28BF3D34A48501A130EF10D195A629C4B8B8A52F34AA0FEA6DC849882FC9CCCE4CC542A38066E548C6B45414E7E516A11D04CA5D0E25497D4B4C4D29C9290CC9C5425DB94F2FCA2142B03083044581A1AEC1A140C891100FAA39D67</regfile>
+						</settings>
+					</task>
+				</tasks>
+			</module>
+		</modules>
+		<resources crc32="448B316F">
+			<resource>
+				<properties>
+					<guid>{CC9C687D-1FF4-4B5B-BEBF-179EC53C5AF3}</guid>
+					<version>1.0.0</version>
+					<versioncomment>Initial version</versioncomment>
+					<type>AMRESOURCEPACKAGE</type>
+					<name>usertile</name>
+					<comment>Default User Account pictures
+
+20140501 MarcelVenema.com</comment>
+					<enabled>yes</enabled>
+					<crc32>D084A4D5</crc32>
+					<folderpath>
+						<folder>
+							<name>_Customer</name>
+							<description/>
+							<guid>{981C70FE-9AD3-4374-BA66-4C0DBEAFB232}</guid>
+							<folder>
+								<name>MarcelVenema.com</name>
+								<description/>
+								<guid>{593F2700-3483-4E7E-B9D7-75A02388C3BA}</guid>
+							</folder>
+						</folder>
+					</folderpath>
+				</properties>
+			</resource>
+		</resources>
+		<runbooks/>
+		<teams/>
+		<projectfolders/>
+		<modulefolders>
+			<folder>
+				<guid>{A569737A-E60D-4E8F-AA4F-76CA9C8CFDF1}</guid>
+				<name>_Customer</name>
+				<description/>
+				<parent/>
+			</folder>
+			<folder>
+				<guid>{E1F41395-25EE-4A9D-A79A-5B3FF2310225}</guid>
+				<name>MarcelVenema.com</name>
+				<description/>
+				<parent>{A569737A-E60D-4E8F-AA4F-76CA9C8CFDF1}</parent>
+			</folder>
+			<folder>
+				<guid>{51C3EE09-2CBF-4E6F-A2F9-461DFA8B0FAA}</guid>
+				<name>Installation and Configuration</name>
+				<description/>
+				<parent>{E1F41395-25EE-4A9D-A79A-5B3FF2310225}</parent>
+			</folder>
+			<folder>
+				<guid>{14F01017-D28C-4A9D-AB35-EA30C5F1CCC4}</guid>
+				<name>Software</name>
+				<description/>
+				<parent/>
+			</folder>
+			<folder>
+				<guid>{F8758919-0A42-467C-97DD-84B681E2EC9E}</guid>
+				<name>MarcelVenema.com</name>
+				<description/>
+				<parent>{14F01017-D28C-4A9D-AB35-EA30C5F1CCC4}</parent>
+			</folder>
+			<folder>
+				<guid>{39D87617-29C9-416C-97CF-1BE85977FD5A}</guid>
+				<name>Installation and Configuration</name>
+				<description/>
+				<parent>{F8758919-0A42-467C-97DD-84B681E2EC9E}</parent>
+			</folder>
+		</modulefolders>
+		<resourcefolders/>
+		<runbookfolders/>
+		<teamfolders/>
+	</buildingblock>
+</AutomationManager>
