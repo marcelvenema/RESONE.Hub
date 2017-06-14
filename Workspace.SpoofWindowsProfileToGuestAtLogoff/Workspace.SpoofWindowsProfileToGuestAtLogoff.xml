@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<!-- RES ONE Workspace Building Block -->
+<!-- Created by Administrator on 6/14/2017 10:19:15 AM -->
+<respowerfuse>
+	<version>10.0.0.0</version>
+	<buildingblock>
+		<powerlaunch>
+			<exttask>
+				<description>Spoof Profile State to guest profile, the profile will be deleted at logoff PS</description>
+				<command>powershell.exe -windowstyle hidden -ExecutionPolicy bypass -noprofile %script%</command>
+				<waitforapplication>yes</waitforapplication>
+				<runonce>disabled</runonce>
+				<script># Spoof Profile State Script
+# Marcel Venema, W-TECH.NET
+
+# Get SID of the current user
+$SID = ([Security.Principal.WindowsIdentity]::GetCurrent()).User.Value
+
+# Set the state of the local profile to guest
+Set-ItemProperty -path "HKLM:\Software\Microsoft\Windows NT\CurrentVersion\ProfileList\$SID\" -name State -value 128</script>
+				<scriptext>ps1</scriptext>
+				<timeoutperiod>30</timeoutperiod>
+				<hideapplication>yes</hideapplication>
+				<runusingdynamicprivileges>yes</runusingdynamicprivileges>
+				<nofolderredir>no</nofolderredir>
+				<runatlogonbefore>no</runatlogonbefore>
+				<runatlogoff>yes</runatlogoff>
+				<runatlogoffbefore>no</runatlogoffbefore>
+				<runatreconnect>no</runatreconnect>
+				<state>both</state>
+				<accesscontrol access_mode="or" zone_mode="or">
+					<access>
+						<type>global</type>
+					</access>
+				</accesscontrol>
+				<guid>{AA6AAA56-F0A1-4440-566C-1A385E62A7D9}</guid>
+				<enabled>yes</enabled>
+			</exttask>
+		</powerlaunch>
+		<powerlaunch>
+			<exttask_settings>
+				<enabled>no</enabled>
+				<exceptions/>
+			</exttask_settings>
+		</powerlaunch>
+	</buildingblock>
+</respowerfuse>
