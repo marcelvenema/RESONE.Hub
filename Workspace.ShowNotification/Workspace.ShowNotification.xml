@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<!-- RES ONE Workspace Building Block -->
+<!-- Created by Administrator on 9/15/2016 12:51:37 PM -->
+<respowerfuse>
+	<version>9.12.0.0</version>
+	<buildingblock>
+		<powerlaunch>
+			<exttask>
+				<description>Check if Home folder exists. If not, show Notification</description>
+				<command>powershell.exe -WindowStyle Hidden -ExecutionPolicy Bypass -NoProfile %script% # check Home Folder</command>
+				<waitforapplication>no</waitforapplication>
+				<runonce>disabled</runonce>
+				<script>[xml]$toast = @"
+&lt;toast duration="long" &gt;&lt;visual&gt;&lt;binding template="ToastGeneric"&gt;&lt;image id="1" placement="appLogoOverride" src="" /&gt;&lt;text id="1"&gt;&lt;/text&gt;&lt;text id="2"&gt;&lt;/text&gt;&lt;text id="3"&gt;&lt;/text&gt;&lt;/binding&gt;&lt;/visual&gt;
+&lt;audio src="ms-winsoundevent:Notification.Reminder"/&gt;&lt;/toast&gt;
+"@
+
+$app = "MarcelVenema.com"
+$image = "%RESCUSTOMRESOURCES%\MV.PNG"
+$caption = "Warning"
+$text1 = "Your personal folder (H:) cannot be accessed. (code: P32) Please contact your system administrator."
+#$text2 = ""
+
+$element = $toast.GetElementsByTagName('image'); $element[0].src = "file:///$image"
+$element = $toast.GetElementsByTagName('text')[0].innerXML = $caption;
+$element = $toast.GetElementsByTagName('text')[1].innerXML = $text1;
+$element = $toast.GetElementsByTagName('text')[2].innerXML = $text2;
+
+[Windows.UI.Notifications.ToastNotificationManager, Windows.UI.Notifications, ContentType = WindowsRuntime]
+$notify = [Windows.UI.Notifications.ToastNotificationManager]::CreateToastNotifier($app) 
+$notification = New-Object -TypeName Windows.Data.Xml.Dom.XmlDocument
+$notification.LoadXml($toast.OuterXml)
+$notify.Show($notification)
+				</script>
+				<scriptext>ps1</scriptext>
+				<timeoutperiod>n.a.</timeoutperiod>
+				<hideapplication>yes</hideapplication>
+				<runusingdynamicprivileges>no</runusingdynamicprivileges>
+				<nofolderredir>no</nofolderredir>
+				<state>both</state>
+				<accesscontrol access_mode="or" zone_mode="or">
+					<access>
+						<type>global</type>
+					</access>
+					<access>
+						<type>powerzone</type>
+						<object>{43524F57-4429-0000-ACFF-A64B0A580B36}</object>
+					</access>
+				</accesscontrol>
+				<guid>{43524F57-4429-0000-BF11-2AD435369CCF}</guid>
+				<enabled>yes</enabled>
+			</exttask>
+		</powerlaunch>
+		<powerlaunch>
+			<exttask_settings>
+				<enabled>yes</enabled>
+				<exceptions/>
+			</exttask_settings>
+		</powerlaunch>
+		<customresources>
+			<folder guid="{00000000-0000-0000-0000-000000000000}" includesubfolders="yes"/>
+		</customresources>
+		<powerzones>
+			<powerzone required="yes">
+				<name>NO-HOMEFOLDER</name>
+				<description>User has no home folder. Detection based on existence of H: drive.</description>
+				<powerzonerules>
+					<rule>
+						<type>55</type>
+						<filter>H:\ not_exist</filter>
+						<type2>0</type2>
+						<filter2/>
+						<comments/>
+						<enabled>yes</enabled>
+					</rule>
+				</powerzonerules>
+				<guid>{43524F57-4429-0000-ACFF-A64B0A580B36}</guid>
+				<enabled>yes</enabled>
+			</powerzone>
+		</powerzones>
+	</buildingblock>
+</respowerfuse>
