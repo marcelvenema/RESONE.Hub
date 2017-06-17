@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>Workspace.ShowNotification</id>
+    <version>1.1.0</version>
+    <authors>Marcel Venema</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>This RES ONE Workspace Execute Command script will show a 'toast' notification.</description>
+    <summary>This RES ONE Workspace Execute Command script will show a 'toast' notification.</summary>
+    <releaseNotes>initial release</releaseNotes>
+    <copyright>Copyright 2017 Marcel Venema</copyright>
+    <tags>BuildingBlocks</tags>
+    <packageTypes>
+      <packageType name="Workspace" version="0.0" />
+      <packageType name="Buildingblock" version="0.0" />
+    </packageTypes>
+  </metadata>
+</package>
